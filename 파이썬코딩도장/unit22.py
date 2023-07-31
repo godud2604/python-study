@@ -80,8 +80,7 @@ d = [i* 2 for i in range(10)]
 """
 a = [i for i in range(10) if i % 2 == 0] # 0~9 숫자 중 2의 배수만 숫자
 
-b = [i + 5 for i in range(10) if i % 2 == 1]
-
+b_1 = [i + 5 for i in range(10) if i % 2 == 1]
 
 
 
@@ -99,3 +98,49 @@ for j in range(2, 10):
     for i in range(1, 10):
         print(i * j)
     
+
+
+# 22.6 리스트에 map 사용하기
+"""
+- list(map(함수, 리스트))
+- tuple(map(함수, 튜플))
+"""
+a = [1.2, 2.5, 3.7, 4.6]
+for i in range(len(a)):
+    a[i] = int(a[i])
+
+print(a)
+
+
+b = list(map(int, a))
+print(b)
+
+
+# c = map(int, input().split()) 
+# list(c) # [10, 20]
+
+
+
+
+# 22.7 튜플 응용하기
+"""
+- 튜플은 리스트와는 달리 내용을 변경할 수 없다 => 불변(immutable)
+- 따라서, 내용을 변경하는 append 같은 메서드는 사용할 수 없고, 요소의 정보를 구하는 메서드만 사용할 수 있다.
+"""
+
+
+
+# 22.7.4 튜플 표현식 사용하기
+"""
+- 튜플을 리스트 표현식처럼 생성할 때는, tuple 안에 for 반복문과 if 조건문을 지정
+- tuple(식 for 변수 in 리스트 if 조건식)
+
+- 참고로, ()(괄호) 안에 표현식을 넣으면 튜플이 아니라 제너레이터 표현식이 된다.
+"""
+
+a = tuple(i for i in range(10) if i % 2 == 0)
+print('tuple a', a) # (0, 2, 4, 6, 8)
+
+b = (i for i in range(10) if i % 2 == 0)
+print('제너레이터 b', b) # <generator object <genexpr> at 0x10b01e740>
+
